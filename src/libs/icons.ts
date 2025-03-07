@@ -1,5 +1,9 @@
 // https://heroicons.com/
-import { PlusCircleIcon, EyeIcon, EyeSlashIcon, TrashIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/solid'
+import {
+  PlusCircleIcon, EyeIcon, EyeSlashIcon,
+  TrashIcon, ChevronDownIcon, ChevronUpIcon,
+  QuestionMarkCircleIcon
+} from '@heroicons/vue/24/solid'
 
 export const icons: {
   [key: string]: any
@@ -10,5 +14,6 @@ export const icons: {
   eyeSlash: EyeSlashIcon,
   trash: TrashIcon,
   arrowUp: ChevronUpIcon,
-  arrowDown: ChevronDownIcon
+  arrowDown: ChevronDownIcon,
+  help: QuestionMarkCircleIcon,
 }

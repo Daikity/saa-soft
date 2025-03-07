@@ -1,20 +1,25 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
-
-interface Account {
-  label: string;
-  type: string;
-  login: string;
-  password: string | null;
-}
+import { ref, watch } from 'vue';
+import type { Account } from '@/libs/types';
+import { texts } from '@/libs/i18n'
 
 export const useAccountStore = defineStore('accountStore', () => {
-  const accounts = ref<Account[]>([]);
+  const accounts = ref<Account[]>(JSON.parse(localStorage.getItem('accounts') || '[]'));
+  const accountType = [
+    {
+      label: texts.typeOptions.ldap,
+      value: texts.typeOptions.ldap
+    },
+    {
+      label: texts.typeOptions.local,
+      value: texts.typeOptions.local
+    }
+  ]
 
   function addAccount() {
     accounts.value.push({
-      label: '',
-      type: 'LDAP',
+      mark: '',
+      recordType: texts.typeOptions.ldap,
       login: '',
       password: null,
     });
@@ -24,7 +29,12 @@ export const useAccountStore = defineStore('accountStore', () => {
     accounts.value.splice(index, 1);
   }
 
+  watch(accounts, (newAccounts) => {
+    localStorage.setItem('accounts', JSON.stringify(newAccounts));
+  }, { deep: true });
+
   return {
+    accountType,
     accounts,
     addAccount,
     deleteAccount,
