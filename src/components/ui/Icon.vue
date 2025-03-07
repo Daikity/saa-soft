@@ -7,15 +7,10 @@
 </template>
 
 <script setup lang='ts'>
-import { icons } from '../../libs/icons'
+import { icons } from '@/libs/icons'
+import type { UiIconProps } from '@/libs/types';
 
-interface Props {
-  icon: string
-  iconTextColor?: string
-  isAbsolute?: boolean
-}
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<UiIconProps>(), {
   iconTextColor: 'text-gray',
   isAbsolute: false
 })

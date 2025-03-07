@@ -11,19 +11,12 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import Icon from './Icon.vue'
-
-interface Props {
-  icon?: string
-  disabled?: boolean
-  filling?: boolean
-  bordered?: boolean
-  btnColor?: string
-}
+import { Icon } from './'
+import type { UiBtnProps } from '@/libs/types';
 
 const emit = defineEmits(['click'])
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<UiBtnProps>(), {
   disabled: false,
   btnColor: 'blue'
 })
@@ -49,12 +42,7 @@ const classNames = computed<string>(() => {
 
 <style lang="scss" scoped>
 .button {
-  @apply duration-200 font-bold py-2 px-4 rounded;
-
-  &.filling {
-    @apply bg-blue-500 hover:bg-blue-700;
-  }
-
+  @apply duration-200 font-bold px-2 rounded;
   &.bordered {
     @apply border;
   }

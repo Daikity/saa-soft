@@ -22,18 +22,10 @@
 <script setup lang='ts'>
 import { computed, nextTick, ref, watch } from 'vue';
 import Item from './selectItem.vue';
-import Icon from '../Icon.vue';
+import { Icon } from '../';
+import type { UiSelectProps } from '@/libs/types';
 
-interface Select {
-  label: string
-  value: any
-}
-
-interface Props {
-  options: Select[]
-}
-
-defineProps<Props>()
+defineProps<{ options: UiSelectProps[]}>()
 
 const model = defineModel();
 const isOpen = ref<boolean>()
@@ -71,14 +63,14 @@ watch(isOpen, async (newValue) => {
 .input-select {
   @apply relative;
   input {
-    @apply outline-none duration-200 px-1
+    @apply outline-none duration-200 px-1 cursor-pointer
       py-2 pl-2 w-full border border-gray-300 focus:border-gray-400 border-r;
   }
 
   .options {
     display: none;
     top: 2.64rem;
-    @apply absolute;
+    @apply absolute z-20 bg-white;
     &.open {
       @apply flex flex-col w-full border-r border-l border-b border-gray-400;
     }

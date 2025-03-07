@@ -7,13 +7,9 @@
 </template>
 
 <script setup lang='ts'>
+import type { UiSelectProps } from '@/libs/types';
 
-interface Props {
-  label: string
-  value: any
-}
-
-defineProps<Props>()
+defineProps<UiSelectProps>()
 const emit = defineEmits(['change'])
 </script>
 

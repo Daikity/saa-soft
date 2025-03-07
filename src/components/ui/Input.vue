@@ -13,21 +13,14 @@
 </template>
 
 <script setup lang='ts'>
-const model = defineModel<string | null>()
-import Icon from './Icon.vue'
+import type { UiInputProps } from '@/libs/types';
+import { Icon } from '@/components/ui';
 
-interface Props {
-  type?: 'text' | 'password'
-  icon?: string
-  required?: boolean
-  placeholder?: string
-  error?: string
-  disabled?: boolean
-}
+const model = defineModel<string | null>()
 
 const emit = defineEmits(['click-icon'])
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<UiInputProps>(), {
   type: 'text',
   required: false,
   disabled: false
