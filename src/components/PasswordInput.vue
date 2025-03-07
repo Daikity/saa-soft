@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { computed } from 'vue';
 import { texts } from '../libs/i18n';
 
