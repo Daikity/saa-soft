@@ -3,12 +3,14 @@
     <input
       v-model="model"
       :type="type"
+      autocomplete="off"
       :placeholder="placeholder"
       :required="required"
       :disabled="disabled"
+      :maxlength="maxlength"
     />
     <Icon isAbsolute @click-icon="emit('click-icon')" v-if="icon" :icon="icon" />
-    <span v-if="error">{{ error }}</span>
+    <span v-if="!!error">{{ error }}</span>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ withDefaults(defineProps<UiInputProps>(), {
   @apply relative flex flex-col relative gap-0.5 items-center z-0;
 
   span {
-    @apply bottom-0 pl-2 text-red-500 text-sm -mt-1;
+    @apply bottom-0 px-1 text-red-500 text-xs -mt-1;
   }
 
   &.error {

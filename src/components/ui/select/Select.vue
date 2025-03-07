@@ -32,8 +32,6 @@ const isOpen = ref<boolean>()
 const inputSelect = ref()
 
 const onChange = (value: any): void => {
-  console.log(value);
-
   model.value = value;
 }
 

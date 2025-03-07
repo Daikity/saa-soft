@@ -15,17 +15,17 @@
       <div class="col-span-3">{{ texts.accountTableHeader.password }}</div>
       <div class="col-span-1" />
     </div>
-    <div v-for="(account, index) in accounts" :key="index" class="mb-4">
+    <form v-for="(account, index) in accounts" :key="index" class="mb-4">
       <AccountItem :account="account" @delete="deleteAccount(index)" />
-    </div>
+    </form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useAccountStore } from '@/stores/accountStore';
 import AccountItem from '@/components/AccountItem.vue';
-import { texts } from '@/libs/i18n';
+import { useAccountStore } from '@/stores/accountStore';
 import { Alert, Icon, Button } from '@/components/ui';
+import { texts } from '@/libs/i18n';
 
 const accountStore = useAccountStore();
 const accounts = accountStore.accounts;

@@ -22,13 +22,23 @@ export type UiInputProps = {
   icon?: string
   required?: boolean
   placeholder?: string
-  error?: string
+  error?: string | null
   disabled?: boolean
+  maxlength?: number
 }
 
 export type Account = {
-  mark: string;
+  mark: Mark[];
   recordType: string;
   login: string;
   password: string | null;
+}
+
+type Mark = {
+  text: string;
+}
+
+export type Validation = {
+  message: string | null
+  isValid: boolean
 }
