@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { Account } from '@/libs/types';
 import { texts } from '@/libs/i18n'
 
@@ -9,7 +9,7 @@ export const useAccountStore = defineStore('accountStore', () => {
     const savedData = JSON.parse(localStorage.getItem('accounts') || '[]')
     const result = savedData.filter((account: Account) => {
       if (account.recordType === texts.typeOptions.local) {
-        return account.login !== '' && account.password !== '';
+        return account.login !== '' && !!account.password;
       }
       return account.login !== '';
     });
@@ -37,8 +37,6 @@ export const useAccountStore = defineStore('accountStore', () => {
       password: '',
     });
   }
-
-
 
   function deleteAccount(index: number) {
     accounts.value.splice(index, 1);
